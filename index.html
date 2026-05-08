@@ -1,41 +1,198 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <nav class="nav">
-        <div class="nav__logo">
-            <h1>Logo</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sneakers - E-Commerce Product Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'orange-accent': '#ff7d1a',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-white font-sans">
+    <!-- Header/Navbar -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-orange-accent transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Logo -->
+            <h1 class="text-2xl font-bold text-gray-900">sneakers</h1>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="text-gray-600 hover:text-orange-accent transition-colors relative group">Collections
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-accent transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#" class="text-gray-600 hover:text-orange-accent transition-colors relative group">Men
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-accent transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#" class="text-gray-600 hover:text-orange-accent transition-colors relative group">Women
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-accent transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#" class="text-gray-600 hover:text-orange-accent transition-colors relative group">About
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-accent transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#" class="text-gray-600 hover:text-orange-accent transition-colors relative group">Contact
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-accent transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </nav>
+
+            <!-- Cart and Avatar -->
+            <div class="flex items-center space-x-4">
+                <button id="cart-btn" class="relative text-gray-600 hover:text-orange-accent transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5H19M7 13l-1.1 5M7 13h10m0 0v5a2 2 0 01-2 2H9a2 2 0 01-2-2v-5"></path>
+                    </svg>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-orange-accent text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                </button>
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Avatar" class="w-8 h-8 rounded-full border-2 border-transparent hover:border-orange-accent transition-colors cursor-pointer">
+            </div>
         </div>
+    </header>
 
-        <ul class="nav__lists">
-            <li>
-                <a href="">HOME</a>
-            </li>
-            <li>
-                <a href="">HOME</a>
-            </li>
-            <li>
-                <a href="">HOME</a>
-            </li>
-            <li>
-                <a href="">HOME</a>
-            </li>
-            <li>
-                <a href="">HOME</a>
-            </li>
-        </ul>
-      </nav>
-
-
-      <div class="header__content">
-            <h1>Lorem, ipsum.</h1>
-      </div>
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden">
+        <div class="fixed left-0 top-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300" id="mobile-menu-content">
+            <div class="p-4">
+                <button id="close-mobile-menu" class="mb-4 text-gray-600 hover:text-orange-accent">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <nav class="space-y-4">
+                    <a href="#" class="block text-gray-600 hover:text-orange-accent transition-colors">Collections</a>
+                    <a href="#" class="block text-gray-600 hover:text-orange-accent transition-colors">Men</a>
+                    <a href="#" class="block text-gray-600 hover:text-orange-accent transition-colors">Women</a>
+                    <a href="#" class="block text-gray-600 hover:text-orange-accent transition-colors">About</a>
+                    <a href="#" class="block text-gray-600 hover:text-orange-accent transition-colors">Contact</a>
+                </nav>
+            </div>
+        </div>
     </div>
-  </body>
+
+    <!-- Cart Dropdown -->
+    <div id="cart-dropdown" class="absolute right-4 top-16 bg-white shadow-lg rounded-lg p-4 w-80 z-30 hidden">
+        <h3 class="font-bold text-gray-900 mb-4">Cart</h3>
+        <div id="cart-empty" class="text-center text-gray-500 py-8">
+            Your cart is empty.
+        </div>
+        <div id="cart-filled" class="hidden">
+            <div class="flex items-center space-x-4 mb-4">
+                <img id="cart-item-img" src="" alt="Product" class="w-12 h-12 rounded">
+                <div class="flex-1">
+                    <p id="cart-item-title" class="text-sm text-gray-600"></p>
+                    <p id="cart-item-price" class="text-sm font-bold"></p>
+                </div>
+                <button id="delete-cart-item" class="text-gray-400 hover:text-red-500">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <button class="w-full bg-orange-accent text-white py-2 rounded-lg hover:bg-orange-600 transition-colors">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Main Product Section -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Left Side: Image Gallery -->
+            <div class="space-y-4">
+                <div class="relative">
+                    <img id="main-image" src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Main Product" class="w-full h-96 object-cover rounded-lg cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openLightbox()">
+                    <!-- Mobile Slider Buttons -->
+                    <button id="prev-btn" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-75 rounded-full p-2 hover:bg-opacity-100 transition-all md:hidden">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+                    <button id="next-btn" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-75 rounded-full p-2 hover:bg-opacity-100 transition-all md:hidden">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="grid grid-cols-4 gap-4">
+                    <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Thumbnail 1" class="w-full h-20 object-cover rounded-lg cursor-pointer border-2 border-transparent hover:border-orange-accent transition-all thumbnail active" onclick="changeImage(this.src)">
+                    <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Thumbnail 2" class="w-full h-20 object-cover rounded-lg cursor-pointer border-2 border-transparent hover:border-orange-accent transition-all thumbnail" onclick="changeImage(this.src)">
+                    <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Thumbnail 3" class="w-full h-20 object-cover rounded-lg cursor-pointer border-2 border-transparent hover:border-orange-accent transition-all thumbnail" onclick="changeImage(this.src)">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Thumbnail 4" class="w-full h-20 object-cover rounded-lg cursor-pointer border-2 border-transparent hover:border-orange-accent transition-all thumbnail" onclick="changeImage(this.src)">
+                </div>
+            </div>
+
+            <!-- Right Side: Product Info -->
+            <div class="space-y-6">
+                <div>
+                    <p class="text-orange-accent font-bold text-sm uppercase tracking-wide">Sneaker Company</p>
+                    <h2 class="text-4xl font-bold text-gray-900 mt-2">Fall Limited Edition Sneakers</h2>
+                    <p class="text-gray-600 mt-4 leading-relaxed">These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer.</p>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <span class="text-3xl font-bold text-gray-900">$125.00</span>
+                    <span class="bg-orange-accent text-white px-2 py-1 rounded text-sm font-bold">50%</span>
+                    <span class="text-gray-400 line-through">$250.00</span>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center border rounded-lg">
+                        <button id="decrease-qty" class="px-3 py-2 text-orange-accent hover:bg-orange-accent hover:text-white transition-colors rounded-l-lg">-</button>
+                        <span id="quantity" class="px-4 py-2 border-x">0</span>
+                        <button id="increase-qty" class="px-3 py-2 text-orange-accent hover:bg-orange-accent hover:text-white transition-colors rounded-r-lg">+</button>
+                    </div>
+                    <button id="add-to-cart" class="flex-1 bg-orange-accent text-white py-3 px-6 rounded-lg hover:bg-orange-600 transition-colors flex items-center justify-center space-x-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5H19M7 13l-1.1 5M7 13h10m0 0v5a2 2 0 01-2 2H9a2 2 0 01-2-2v-5"></path>
+                        </svg>
+                        <span>Add to cart</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="relative max-w-2xl w-full mx-4">
+            <button id="close-lightbox" class="absolute -top-10 right-0 text-white hover:text-orange-accent transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <img id="lightbox-image" src="" alt="Lightbox" class="w-full h-auto rounded-lg">
+            <button id="lightbox-prev" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-75 rounded-full p-2 hover:bg-opacity-100 transition-all">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+            </button>
+            <button id="lightbox-next" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-75 rounded-full p-2 hover:bg-opacity-100 transition-all">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </button>
+            <div class="flex justify-center space-x-4 mt-4">
+                <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Thumb 1" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent hover:border-orange-accent transition-all lightbox-thumb active" onclick="changeLightboxImage(this.src)">
+                <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Thumb 2" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent hover:border-orange-accent transition-all lightbox-thumb" onclick="changeLightboxImage(this.src)">
+                <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Thumb 3" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent hover:border-orange-accent transition-all lightbox-thumb" onclick="changeLightboxImage(this.src)">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Thumb 4" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent hover:border-orange-accent transition-all lightbox-thumb" onclick="changeLightboxImage(this.src)">
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
 </html>
