@@ -29,3 +29,16 @@ a{
     display: flex;
     column-gap: 20px;
 }
+
+
+.header__content{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.header__content h1{
+    font-size: 50px;
+    font-family: sans-serif;
+    color: red;
+}
